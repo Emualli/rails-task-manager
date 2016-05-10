@@ -1,6 +1,7 @@
 <h1>Liste des tâches : </h1>
 
 <% @tasks.each do |t| %>
-<p><input type="checkbox" <%= t.status ? 'checked' : '' %>>&nbsp;<%= t.name %></p>
+<p><input type="checkbox" <%= t.status ? 'checked' : '' %>>&nbsp;<%= link_to t.name, task_path(id: t.id) %>&nbsp;(<%= link_to "edit", edit_task_path(id: t.id) %> - <%= link_to "delete", task_path(t), method: :delete, data: { confirm: 'Really ?' } %>)</p>
 <% end %>
 
+<p><%= link_to 'Créer une nouvelle tâche', new_task_path %></p>
